@@ -1,0 +1,48 @@
+---
+title: "homework0"
+author: "Josephine Au"
+format: html
+editor: visual
+---
+
+## Solution descriptions
+
+First, define the values for a, b, and c, and the function ax\^2 + b + c = 0.
+
+Then, I have to consider the number of possible of values of 0, 1, or 2. Therefore, I have to first check whether b\^2 - 4ac is negative. If so, there would be no solution. Otherwise, solve the quadratic equation and plot it.
+
+## Code
+
+```{r}
+#| echo: false
+a <- 1
+b <- 3
+c <- 2
+
+f <- function(x) {
+    return(a*x^2 + b*x +c)
+}
+
+if (b^2 - 4*a*c <0) {
+  print ("There is no solution, and I don't know how to make a graph that makes sense, sorry!")
+  
+  minx <- (c-b^2/(4*a))
+  
+  plot(f, from=-100, to=100)
+  abline(h = 0)
+} else {
+  
+  x1 <- (-b + (sqrt(b^2-4*a*c)))/(2*a)
+  x2 <- (-b - (sqrt(b^2-4*a*c)))/(2*a)
+  
+  if (x1 == x2) {
+    print(paste("To solve this equation, x =", x1))
+  } else {
+    print(paste("To solve this equation, x =", x1, "or x =", x2))
+  }
+  
+  plot(f, from=x2-1, to=x1+1)
+  abline(h = 0)
+}
+
+```
